@@ -9,4 +9,5 @@ public class DataContext : DbContext
     { }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<AppSetting> AppSettings { get; set; }
 }
