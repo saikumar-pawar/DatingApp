@@ -1,0 +1,30 @@
+<div *ngIf="appSettings.length > 0">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>App Name</th>
+        <th>Key</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appSetting of appSettings">
+        <td>{{ appSetting.id }}</td>
+        <td>{{ appSetting.appName }}</td>
+        <td>{{ appSetting.key }}</td>
+        <td>
+          <input type="text" [(ngModel)]="appSetting.value">
+        </td>
+        <td>
+          <button (click)="updateAppSetting(appSetting)">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination [totalItems]="totalPages" [(ngModel)]="currentPage" [itemsPerPage]="pageSize" (pageChanged)="onPageChange($event)"></pagination>
+</div>
+<div *ngIf="appSettings.length === 0">
+  No app settings found.
+</div>
